@@ -1,6 +1,6 @@
 const API_URL = 'http://warsawjs-flights-api.herokuapp.com/';
 
-let readAirportList = () => {
+export let readAirportList = () => {
     return window.fetch(API_URL + 'airports').then(response =>
         response.json()
     ).catch(error =>
@@ -8,7 +8,7 @@ let readAirportList = () => {
     )
 }
 
-let searchFlights = (params) => {
+export let searchFlights = (params) => {
     const { from, to, departDate, returnDate } = params
     return window.fetch(`${API_URL}flights/${from}/${to}/${departDate}/${returnDate}`)
         .then(response =>
