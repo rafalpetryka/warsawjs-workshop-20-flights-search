@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import './FlightList.css';
+
+
 function aggregate(path) {
     return path.reduce((memo, item, index, arr) => {
       const { airportFrom, airportTo, length } = item;
