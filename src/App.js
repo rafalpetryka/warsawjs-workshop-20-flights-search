@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {readAirportList, searchFlights} from './api'
 import SearchForm from './SearchForm'
+import FlightList from './FlightList'
 
 class App extends Component {
   state = {
@@ -32,6 +33,15 @@ class App extends Component {
     })
   }
 
+  handleReset = () => {
+    this.setState(
+      {
+        searchParams: {from: "WAW", to: "ATL", departureDate: "2018-05-20", returnDate: "2018-05-20"},
+        flights: null
+      }
+    )
+  }
+
   render() {
     const { isLoading, airports, searchParams, flights } = this.state;
     return (
@@ -52,9 +62,10 @@ class App extends Component {
             />
           )}
           { !isLoading && flights && (
-            <span>
-              Flight list
-            </span>
+            <FlightList
+              flights={flights}
+              onReset={this.handleReset}
+            />
           )}
         </div>
       </div>
